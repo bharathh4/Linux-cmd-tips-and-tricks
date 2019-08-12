@@ -9,12 +9,12 @@
 
   > ## Ubuntu
 
-    - Say you want to open port 5002
-    - sudo ufw allow 5002
+    >> ### Say you want to open port 5002
+    sudo ufw allow 5002
   > ## CentOS
 
-    - su
-    - iptables -I INPUT -p tcp --dport 5000 --syn -j ACCEPT (incoming)
-    - iptables -I OUTPUT -p tcp --dport 5000 --syn -j ACCEPT (outgoing) optional
-    - service iptables save
-    - Ctrl-D
+    su
+    iptables -I INPUT -p tcp --dport 5000 --syn -j ACCEPT (incoming)
+    iptables -I OUTPUT -p tcp --dport 5000 --syn -j ACCEPT (outgoing) optional
+    service iptables save
+    Ctrl-D
