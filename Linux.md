@@ -18,3 +18,7 @@
     iptables -I OUTPUT -p tcp --dport 5000 --syn -j ACCEPT (outgoing) optional
     service iptables save
     Ctrl-D
+    
+ # How to quickly grep for a string in a sqlite file
+ 
+ sqlite3 your.db .dump | grep Nuance
