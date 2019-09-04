@@ -22,3 +22,12 @@
  # How to quickly grep for a string in a sqlite file
  
  sqlite3 your.db .dump | grep Nuance
+
+# How to add an alias for quick access permanently
+- alias gm='cd /home/speech/Scripts/somedir/'
+- alias speechops='source /home/speech/Scripts/speech_ops_venv/bin/activate'
+Do 
+ - vim ~/.bash_aliases
+ - Insert above alias defs
+
+
