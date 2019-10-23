@@ -37,3 +37,8 @@ Do
   - Or maybe the tool you want is lsof, which stands for list open files. It has a lot of options, so check the man page, but if you want to see all open files under a directory:
   - lsof +D /path
   - That will recurse through the filesystem under /path, so beware doing it on large directory trees. Once you know which processes have files open, you can exit those apps, or kill them with the kill(1) command.
+  
+# How to get back overwritten or deleted files on Linux
+
+grep -i -a -B100 -A100 'a string unique to your file' /dev/sda1 |
+ strings > /var/tmp/my-recovered-file
