@@ -42,3 +42,6 @@ Do
 
 grep -i -a -B100 -A100 'a string unique to your file' /dev/sda1 |
  strings > /var/tmp/my-recovered-file
+ 
+# How to pipe multi line python code to a file
+python -c "import dbhelper;dbhelper.summary()" > dbnotes.txt
