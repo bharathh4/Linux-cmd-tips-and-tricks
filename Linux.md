@@ -47,5 +47,8 @@ grep -i -a -B100 -A100 'a string unique to your file' /dev/sda1 |
 python -c "import dbhelper;dbhelper.summary()" > dbnotes.txt
 
 # How to split text in linux using a delimitter
-This shows how to split by the delimitter '#' and select the second element
-grep 'None' /tmp/temp.txt | cut -d'#' -f2 - 
+- This shows how to split by the delimitter '#' and select the second element
+- grep 'None' /tmp/temp.txt | cut -d'#' -f2 - 
+
+# How to do inverse pattern match using grep in linux
+grep -v 'None' /tmp/temp.txt
