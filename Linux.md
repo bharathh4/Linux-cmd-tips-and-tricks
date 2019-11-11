@@ -55,20 +55,20 @@ grep -v 'None' /tmp/temp.txt
 
 
 # How to add a harddrive in Linux
-Assume you have added a physical drive or added a drive in vitualbox
-ls /dev/sd*
-p
-n
-Enter
-Enter 
-Enter
-w
+- Assume you have added a physical drive or added a drive in vitualbox
+- ls /dev/sd*
+- p
+- n
+- Enter
+- Enter 
+- Enter
+- w
 
-Creating a Filesystem on an Ubuntu Disk Partition
-sudo mkfs.ext4 -L /hdd2 /dev/sdb1
+#### Creating a Filesystem on an Ubuntu Disk Partition
+- sudo mkfs.ext4 -L /hdd2 /dev/sdb1
 
 #### The drive is called hdd2
-sudo mkdir /hdd2
-sudo mount /dev/sdb1 /hdd2
-sudo gedit /etc/fstab
-/dev/sdb1       /hdd2         auto    defaults        0       0
+- sudo mkdir /hdd2
+- sudo mount /dev/sdb1 /hdd2
+- sudo gedit /etc/fstab
+- /dev/sdb1       /hdd2         auto    defaults        0       0
