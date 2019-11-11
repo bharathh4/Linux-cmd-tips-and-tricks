@@ -45,3 +45,7 @@ grep -i -a -B100 -A100 'a string unique to your file' /dev/sda1 |
  
 # How to pipe multi line python code to a file
 python -c "import dbhelper;dbhelper.summary()" > dbnotes.txt
+
+# How to split text in linux using a delimitter
+This shows how to split by the delimitter '#' and select the second element
+grep 'None' /tmp/temp.txt | cut -d'#' -f2 - 
