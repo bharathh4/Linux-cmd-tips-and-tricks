@@ -53,6 +53,8 @@ python -c "import dbhelper;dbhelper.summary()" > dbnotes.txt
 # How to do inverse pattern match using grep in linux
 grep -v 'None' /tmp/temp.txt
 
+# How to grep for only the pattern in linux 
+grep -o "hello.*" 'crazyhello.wav' 
 
 # How to add a harddrive in Linux
 - Assume you have added a physical drive or added a drive in vitualbox
