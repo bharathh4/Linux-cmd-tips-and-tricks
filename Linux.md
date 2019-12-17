@@ -74,3 +74,9 @@ grep -o "hello.*" 'crazyhello.wav'
 - sudo mount /dev/sdb1 /hdd2
 - sudo gedit /etc/fstab
 - /dev/sdb1       /hdd2         auto    defaults        0       0
+
+
+#### How to search for keywords in directories in linux
+- grep -r -o "your_word" .*
+- grep -r -o "your_word" your_directory
+
