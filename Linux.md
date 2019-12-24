@@ -105,3 +105,7 @@ Right click in the unallocated space at the end and make it an extended partitio
 Right click in the new partition and select linux-swap in the File system field.
 Commit your changes as before
 Right click on your swap partition and select swapon
+
+# How to copy a directory in Linux
+- scp -P 2222 -r speech@10.0.0.6:/home/speech/Scripts/S3uploads S3uploads
+
