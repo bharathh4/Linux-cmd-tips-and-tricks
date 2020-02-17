@@ -109,3 +109,13 @@ Right click on your swap partition and select swapon
 # How to copy a directory in Linux
 - scp -P 2222 -r speech@10.0.0.6:/home/speech/Scripts/S3uploads S3uploads
 
+# What to do when you can't ssh into a machine
+- check port rules
+  - is port 22 allowed. In Azure, the rules at the bottom most are the most restrictive and the ones you add on top are exeptions and allowances.
+- check if the sshd deamon is running; if it isn't debug using systemctl. 
+  - Check if directory permissions has changed. For example if /var is not owned by root, sshd cannot start. /var should always be owned by root with individuals having read and write privileges. 
+  
+- check if you are using the right .pem file. 
+  - do you have the right private key.
+  
+ 
