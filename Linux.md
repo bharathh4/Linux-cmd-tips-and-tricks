@@ -138,3 +138,7 @@ Right click on your swap partition and select swapon
    - Data goes in /opt/PackageName/data
 
    - For apps that were to be distributed outside of our shop we wrote them to be relocatable by the package manager. This was a rare occurrence, and not "fun".
+
+# How generate a public key from a private key
+  - chmod 400 ~/.ssh/id_rsa
+  - ssh-keygen -y -f ~/.ssh/id_rsa
