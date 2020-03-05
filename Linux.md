@@ -142,3 +142,24 @@ Right click on your swap partition and select swapon
 # How generate a public key from a private key
   - chmod 400 ~/.ssh/id_rsa
   - ssh-keygen -y -f ~/.ssh/id_rsa
+
+# Check connection attempts and disable root login
+    
+    1 cd /var/log/
+    2  ls
+    3  tail -f messages
+    4  less messages
+    5  less secure
+    6  vim /etc/ssh/sshd_config
+    7  vi /etc/ssh/sshd_config
+    8  sudo service sshd restart
+    9  vi /etc/ssh/sshd_config
+      - Set rootlogin to no
+    10  systemctl status sshd
+    11  iptables
+    12  firewalld
+    13  firewalld -l
+    14  firewall-cmd --get-default-zone
+    15  firewall-cmd --get-active-zones
+    16  firewall-cmd -l
+    17  sudo firewall-cmd --list-all
