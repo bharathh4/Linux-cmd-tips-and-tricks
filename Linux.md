@@ -163,3 +163,18 @@ Right click on your swap partition and select swapon
     15  firewall-cmd --get-active-zones
     16  firewall-cmd -l
     17  sudo firewall-cmd --list-all
+
+# How to write tools with python and linux
+
+    1. Create a python project say in /opt/speech/my_tool with virtual environment /opt/speech/my_tool/venv
+    2. Say the program is called /opt/speech/my_tool/thetool.py
+    3. Create a file called "thetool" in the same directory with contents
+       #! /opt/speech/my_tool/venv/bin/python
+        from thetool import main
+        main()
+    4. sudo chmod +x /opt/speech/my_tool/thetool
+    5. Now create a symbolic link at a bin directory with 
+       ln -s /opt/speech/my_tool/thetool /opt/speech/bin/thetool
+    6  Now add this to a ~/.bash_profile or ~/.bashrc
+       export PATH=$PATH:/opt/speech/bin
+
