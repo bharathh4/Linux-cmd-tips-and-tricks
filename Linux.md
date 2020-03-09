@@ -177,4 +177,9 @@ Right click on your swap partition and select swapon
        ln -s /opt/speech/my_tool/thetool /opt/speech/bin/thetool
     6  Now add this to a ~/.bash_profile or ~/.bashrc
        export PATH=$PATH:/opt/speech/bin
+    7. Don't touch or edit the link -- this will remove the sumbolic link
+    
+# Don't edit symbolic links on linux
+   - This causes the link to vanish
+   - Alway edit the original file
 
