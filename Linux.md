@@ -183,3 +183,5 @@ Right click on your swap partition and select swapon
    - This causes the link to vanish
    - Alway edit the original file
 
+# How to find the difference between two files in linux
+  - git diff file1 file2
