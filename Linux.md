@@ -185,3 +185,63 @@ Right click on your swap partition and select swapon
 
 # How to find the difference between two files in linux
   - git diff file1 file2
+
+# How to add cloud network drive (Azure) to Linux
+
+### Install Azure cli
+  ```
+  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+  sudo sh -c 'echo -e "[azure-cli]
+  name=Azure CLI
+  baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+  enabled=1
+  gpgcheck=1
+  gpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
+
+  sudo yum install azure-cli
+  ```
+### Install cifs mount tool and nc
+
+  ```
+  sudo yum install cifs-utils 
+  dnf install nmap # install nc
+  ```
+
+### Open port 445 for smb
+  ```
+  resourceGroupName="xyzDevRG"
+  storageAccountName="xyzsharedrive"
+
+  # This command assumes you have logged in with az login
+  httpEndpoint=$(az storage account show \
+      --resource-group $resourceGroupName \
+      --name $storageAccountName \
+      --query "primaryEndpoints.file" | tr -d '"')
+  smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))
+  fileHost=$(echo $smbPath | tr -d "/")
+
+  nc -zvw3 $fileHost 445
+  ```
+### Mount the drive
+  ```
+  resourceGroupName="xyzDevRG"
+  storageAccountName="xyzsharedrive"
+  fileShareName="xyzspesc"
+
+  mntPath="/mnt/$storageAccountName/$fileShareName"
+  sudo mkdir -p $mntPath
+
+  httpEndpoint=$(az storage account show \
+      --resource-group $resourceGroupName \
+      --name $storageAccountName \
+      --query "primaryEndpoints.file" | tr -d '"')
+  smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
+
+  storageAccountKey=$(az storage account keys list \
+      --resource-group $resourceGroupName \
+      --account-name $storageAccountName \
+      --query "[0].value" | tr -d '"')
+
+  sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+  ```
