@@ -250,7 +250,9 @@ grep -o "hello.*" 'crazyhello.wav'
   #sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
   sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,dir_mode=0777,file_mode=0777,serverino
   ```
-
+  
+  In some situation if a Azure file share is not mountable from any VM, it could be the case that the VM has access restrictions configured outside the OS. For example, in some enterprise environments, VMs don't have a public ip with only a VPN access and a private ip configured. In such cases, one may need to configure or rather add a private endpoint for the (Azure) fileshare. This usually involves the creation of a custom DNS setting with a certain FQDN (abcstorage.blob.core.windows.net) and a private ip (172.89.65.15). 
+  
 ### How to tar a directory with exceptions
   ```
   tar -zcvf mytars/a_dir.tgz a_adir --exclude=a_dir/unwanted_sub_dir
