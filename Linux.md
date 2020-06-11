@@ -259,4 +259,8 @@ grep -o "hello.*" 'crazyhello.wav'
   ```
   
 
+### To list listening ports
 
+  ```
+  netstat -tulpn | grep LISTEN
+  ```
