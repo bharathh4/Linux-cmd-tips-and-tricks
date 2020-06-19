@@ -264,3 +264,12 @@ grep -o "hello.*" 'crazyhello.wav'
   ```
   netstat -tulpn | grep LISTEN
   ```
+
+### If ```supervisorctl status``` doesn't work 
+  
+  In a non-vscode terminal
+  ```
+  sudo service supervisord restart
+  sudo /usr/local/bin/supervisorctl status
+  ```
+  
