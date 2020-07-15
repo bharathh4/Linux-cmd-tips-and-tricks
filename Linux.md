@@ -280,12 +280,14 @@ grep -o "hello.*" 'crazyhello.wav'
   For dry run 
   ```
   # If you are permissions or set date error use flags --no-perms --omit-dir-times
-  rsync -anv --no-perms --omit-dir-times -e "ssh -i /home/speech/.ssh/Azure/id_rsa" /mnt/s_drive/adir/bdir/ speech@172.172.172.172:/mnt/speech/adir
+  # pay attention: rsync adir/ adir. Contents of adir (local) in adir (remote)
+  rsync -anv --no-perms --omit-dir-times -e "ssh -i /home/speech/.ssh/Azure/id_rsa" /mnt/s_drive/adir/bdir/ speech@172.172.172.172:/mnt/speech/adir/bdir
   ```
   Else
   ```
   # If you are permissions or set date error use flags --no-perms --omit-dir-times
-  sudo rsync -Pav --no-perms --omit-dir-times -e "ssh -i /home/speech/.ssh/Azure/id_rsa" /mnt/s_drive/adir/bdir/ speech@172.172.172.172:/mnt/speech/adir
+  # pay attention: rsync adir/ adir. Contents of adir (local) in adir (remote)
+  sudo rsync -Pav --no-perms --omit-dir-times -e "ssh -i /home/speech/.ssh/Azure/id_rsa" /mnt/s_drive/adir/bdir/ speech@172.172.172.172:/mnt/speech/adir/bdir
   ```
   
   There are ways to run rsync in background.
