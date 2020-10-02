@@ -328,3 +328,20 @@ Run as a service with
     sudo systemctl start openfortivpn@prodserver1.service
     sudo systemctl status openfortivpn@prodserver1.service
     sudo systemctl stop openfortivpn@prodserver1.service
+
+
+# Why a cron can fail
+
+If you have tested something as a particular user and things work out fine when you run, the cron version can still fail. root and a particular user can have different environments. Debug with say
+
+    sudo cat /var/log/cron | grep SSHException
+    sudo cat /var/log/cron | grep some_identifier
+
+
+In fact as best practice run it immediately by scheduling for the next immediate minute and 
+        
+    sudo tail -f /var/log/cron
+
+This problem was notorious when connecting to another machine and root really doesn't know about a certain host and crontab is being run as root. This is fixed by adding something like this in your program or script
+
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
