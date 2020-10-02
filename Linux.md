@@ -297,7 +297,7 @@ grep -o "hello.*" 'crazyhello.wav'
 # How to use openfortivpn as a background service
 
 Add the service file /lib/systemd/system/openfortivpn@.service
-    ```
+    
     [Unit]
     Description=OpenFortiVPN for %I
     After=network-online.target
@@ -311,17 +311,17 @@ Add the service file /lib/systemd/system/openfortivpn@.service
 
     [Install]
     WantedBy=multi-user.target
-    ```
+    
 
 Create a file at /etc/openfortivpn/prodserver1 with contents. (Not prodserver1.conf)
     
-    ```
+    
     host = 52.23.122.899
     port = 443
     username = dev1
     password = xagahaghaghaghgahhaD5
     trusted-cert = 4daghagahaaghaghagcd
-    ```
+    
     
 Run as a service with 
 
