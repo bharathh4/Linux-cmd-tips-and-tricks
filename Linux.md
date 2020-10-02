@@ -291,3 +291,40 @@ grep -o "hello.*" 'crazyhello.wav'
   ```
   
   There are ways to run rsync in background.
+
+
+
+# How to use openfortivpn as a background service
+
+Add the service file /lib/systemd/system/openfortivpn@.service
+    ```
+    [Unit]
+    Description=OpenFortiVPN for %I
+    After=network-online.target
+    Documentation=man:openfortivpn(1)
+
+    [Service]
+    Type=simple
+    PrivateTmp=true
+    ExecStart=/usr/bin/openfortivpn -c /etc/openfortivpn/%I.conf
+    OOMScoreAdjust=-100
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+Create a file at /etc/openfortivpn/prodserver1 with contents. (Not prodserver1.conf)
+    
+    ```
+    host = 52.23.122.899
+    port = 443
+    username = dev1
+    password = xagahaghaghaghgahhaD5
+    trusted-cert = 4daghagahaaghaghagcd
+    ```
+    
+Run as a service with 
+
+    sudo systemctl start openfortivpn@prodserver1.service
+    sudo systemctl status openfortivpn@prodserver1.service
+    sudo systemctl stop openfortivpn@prodserver1.service
