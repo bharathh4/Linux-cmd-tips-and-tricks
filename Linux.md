@@ -345,3 +345,59 @@ In fact as best practice run it immediately by scheduling for the next immediate
 This problem was notorious when connecting to another machine and root really doesn't know about a certain host and crontab is being run as root. This is fixed by adding something like this in your program or script
 
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+
+# How to make service out of openvpn in centos 6 with init.d (Not relevant on newer OSes which use systemd)
+
+To use the init.d based service manager in centos 6 system, rename your .ovpn files to say .conf and place them
+in /etc/openvpn/. If you are running this a cli command then you can directly do something like 
+
+    sudo openvpn /etc/openvpn/whatever.ovpn
+    
+Btw, the .ovpn file is really this: https://github.com/OpenVPN/openvpn/blob/master/sample/sample-config-files/client.conf
+The extension .ovpn is a windows thing.
+
+But if you are using the service script that comes with openvpn installation on centos 6, then you have to rename them 
+as .conf because the script is looking for it. The script by Douglas Keller <doug@voidstar.dyndns.org>.
+
+    for c in `/bin/ls *.conf 2>/dev/null`; do
+        bn=${c%%.conf}
+        if [ -f "$bn.sh" ]; then
+            . ./$bn.sh
+        fi
+        rm -f $piddir/$bn.pid
+        # Handle backward compatibility, see Red Hat Bugzilla ID #458594
+        script_security=''
+        if [ -z "$( grep '^[[:space:]]*script-security[[:space:]]' $c )" ]; then
+            script_security="--script-security 2"
+        fi
+        $openvpn --daemon --writepid $piddir/$bn.pid --cd $work --config $c $script_security
+        if [ $? = 0 ]; then
+            successes=1
+        else
+            errors=1
+        fi
+    done
+        
+Ok rename the file as whatever.conf and place it in /etc/openvpn/
+Now do 
+
+    ps -ef | grep vpn
+
+Kill all existing connections
+
+Now you can do service operations like 
+    
+    sudo service opnevpn start|stop|restart|condrestart|reload|reopen|status
+
+eg 
+
+    sudo service openvpn start
+    sudo service openvpn stop
+    sudo service openvpn restart
+    
+# How to get the ip of a machine on all vpn connections
+
+    ifconfig | grep "inet addr" | cut -d':' -f2 | cut -d' ' -f1 | grep -v '10.0.200.9\|127.0.0.1'
+    
+where 10.0.200.9 is the ip of the machine on the local network. List all that you are not looking for. 
