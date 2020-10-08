@@ -401,3 +401,27 @@ eg
     ifconfig | grep "inet addr" | cut -d':' -f2 | cut -d' ' -f1 | grep -v '10.0.200.9\|127.0.0.1'
     
 where 10.0.200.9 is the ip of the machine on the local network. List all that you are not looking for. 
+
+# How to strip away a token such as " or ,
+
+    grep blab blah.txt | tr -d '"' 
+    grep blab blah.txt | tr -d ','
+    
+# How to read line by line in bash
+
+    input="afile.txt"
+    while IFS= read -r line
+    do
+      echo "$line"
+      echo "###########################################################################"
+    done < "$input"
+   
+# How to write functions in bash
+
+    function fetch {
+      echo "Call to $1"
+    }
+# How to assign results to variable in bash
+
+    project=`grep project agent.json | cut -d':' -f2 | cut -d',' -f1 | tr -d '"' | tr -d ' '`
+    echo $project
