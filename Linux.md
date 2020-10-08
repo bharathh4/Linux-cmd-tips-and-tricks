@@ -421,6 +421,7 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
     function fetch {
       echo "Call to $1"
     }
+    fetch John
 # How to assign results to variable in bash
 
     project=`grep project agent.json | cut -d':' -f2 | cut -d',' -f1 | tr -d '"' | tr -d ' '`
