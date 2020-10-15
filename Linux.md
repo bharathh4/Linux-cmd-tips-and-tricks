@@ -435,3 +435,16 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
 
     project=`grep project agent.json | cut -d':' -f2 | cut -d',' -f1 | tr -d '"' | tr -d ' '`
     echo $project
+    
+# How to copy big or many files from remote Linux machine (on a choppy connection) to local Windows using WSL
+    
+    cp /mnt/c/Users/Bharath/.ssh/azure/id_rsa /home/bharath/.ssh/azure/id_rsa # wsl quirk 
+    sudo chmod 600 /home/bharath/.ssh/azure/id_rsa # wsl quirk of not being able to change permission on /mnt/c/Users/Bharath
+    
+    dstdir=/mnt/speech/dst
+    srcdir=/mnt/speech/src
+    
+    # if you are using a private identity file
+    rsync -av --partial -e "ssh -i /home/bharath/.ssh/azure/id_rsa" speech@172.33.111.10:$srcdir $dstdir
+    
+    
