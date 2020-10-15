@@ -407,6 +407,15 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
     grep blab blah.txt | tr -d '"' 
     grep blab blah.txt | tr -d ','
     
+# How to loop through all the files in a directory in bash
+
+    FILES=/mnt/speech/*.py
+    for f in $FILES
+    do
+      echo "Processing $f file..."
+      cat $f
+    done
+    
 # How to read line by line in bash
 
     input="afile.txt"
