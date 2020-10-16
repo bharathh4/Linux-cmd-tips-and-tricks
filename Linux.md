@@ -447,4 +447,16 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
     # if you are using a private identity file
     rsync -av --partial -e "ssh -i /home/bharath/.ssh/azure/id_rsa" speech@172.33.111.10:$srcdir $dstdir
     
-    
+# How to convert audio using sox in bash
+
+    function convert {
+      #echo "Convert to $1 and put in $2"
+      sox.exe "$1" -e signed-integer -c 1 -b 16 -r 16000 "$2/$1" # convert to `16khz 16 bit pcm
+
+    }
+    srcfiles=first_names_rising/*.wav
+    dst_dir=first_names_rising_pcm
+    for srcfilename in $srcfiles
+    do 
+       convert $srcfilename $dst_dir
+    done
