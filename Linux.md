@@ -312,6 +312,27 @@ Add the service file /lib/systemd/system/openfortivpn@.service
     [Install]
     WantedBy=multi-user.target
     
+    
+This was the recommendation or a service file used by a coworker that ensured that the service was last in priority to be killed gave permission for ppp because openfortivpn uses it. This setup somehow ensured that service did not die like it did with my setup.
+
+    [Unit]
+    Description=OpenFortiVPN
+    After=network-online.target
+
+    [Service]
+    Type=simple
+    PrivateTmp=true
+    ExecStart=/usr/bin/openfortivpn -c /etc/openfortivpn/%I.conf
+    OOMScoreAdjust=-1000
+
+    DeviceAllow=/dev/ppp
+    # Auto restart when it gets disconnected.
+    Restart=always
+    RestartSec=500ms
+
+    [Install]
+    WantedBy=multi-user.target
+
 
 Create a file at /etc/openfortivpn/prodserver1 with contents. (Not prodserver1.conf)
     
