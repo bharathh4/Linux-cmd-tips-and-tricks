@@ -499,3 +499,15 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
     do 
        convert $srcfilename $dst_dir
     done
+
+# How to have ruby installed on Centos *
+
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+    \curl -sSL https://get.rvm.io | bash -s stable
+    source /home/theatro/.profile
+    rvm install ruby
+    gem install jekyll
+    jekyll -v
+    gem install bundler
+    bundle
+    bundle exec jekyll serve
