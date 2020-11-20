@@ -19,6 +19,24 @@
     service iptables save
     Ctrl-D
     
+  > ## CentOS 8
+    
+    firewall-cmd --list-all
+    firewall-cmd --get-services
+    firewall-cmd --get-zones
+    firewall-cmd --zone=public --permanent --add-service=http
+    firewall-cmd --zone=public --permanent --add-port 8080/tcp
+    firewall-cmd --reload
+    firewall-cmd --list-all
+    
+# How to close a port in firewall
+
+  > ## CentOS 8
+  
+    firewall-cmd --zone=public --permanent --remove-service http
+    firewall-cmd --zone=public --permanent --remove-port 8080
+    firewall-cmd --reload
+    
  # How to quickly grep for a string in a sqlite file
  
  sqlite3 your.db .dump | grep Nuance
