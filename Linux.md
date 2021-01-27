@@ -511,3 +511,6 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
     gem install bundler
     bundle
     bundle exec jekyll serve
+# Where are wsl2 backend docker images in Windows
+
+    C:\Users\Bharath\AppData\Local\Docker\wsl\data
