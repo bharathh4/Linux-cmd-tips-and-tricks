@@ -514,3 +514,9 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
 # Where are wsl2 backend docker images in Windows
 
     C:\Users\Bharath\AppData\Local\Docker\wsl\data
+
+# How to move docker container with wsl 2 backend images in Windows 
+    wsl --shutdown
+    wsl --export docker-desktop-data D:\Docker_Experiments\tmp\docker-desktop-data.tar
+    wsl --unregister docker-desktop-data
+    wsl --import docker-desktop-data D:\Docker_Experiments\data D:\Docker_Experiments\tmp\docker-desktop-data.tar --version 2
