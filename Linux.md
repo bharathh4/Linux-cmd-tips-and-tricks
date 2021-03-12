@@ -523,7 +523,8 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
     
 # How to pipe results of 'find' to a file
 
-    find wav "audio_data" -print > audiofilepaths.txt
+    find "audio_data" -name "*.wav" -print > audiofilepaths.txt
+
     
-  Not having -print will give your odd errors
+  Use this in case you get odd errors
 
