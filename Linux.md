@@ -520,3 +520,10 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
     wsl --export docker-desktop-data D:\Docker_Experiments\tmp\docker-desktop-data.tar
     wsl --unregister docker-desktop-data
     wsl --import docker-desktop-data D:\Docker_Experiments\data D:\Docker_Experiments\tmp\docker-desktop-data.tar --version 2
+    
+# How to pipe results of 'find' to a file
+
+    find wav "audio_data" -print > audiofilepaths.txt
+    
+  Not having -print will give your odd errors
+
