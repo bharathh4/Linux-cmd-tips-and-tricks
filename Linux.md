@@ -525,6 +525,14 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
 
     find "audio_data" -name "*.wav" -print > audiofilepaths.txt
 
-    
   Use this in case you get odd errors
 
+# Why Supervisor fails
+
+  - The log filepath probably doesn't exist. Check the app conf file in /etc/supervisord/conf.d/app.conf
+
+# Why gunicorn - flask fails 
+
+  30 seconds is the default timeout setting for gunicorn workers. Any app server worker that doesn't respond within 30 seconds is timed-out.
+  
+  
