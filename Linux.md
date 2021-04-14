@@ -535,4 +535,37 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
 
   30 seconds is the default timeout setting for gunicorn workers. Any app server worker that doesn't respond within 30 seconds is timed-out.
   
-  
+# How to replace strings in bash
+
+  ```bash
+  temp=$leftfile$rightfile
+  old_token=".wavright\/"
+  new_token="_"
+  temp=${temp/$old_token/$new_token}
+  ```
+
+# How to concatenate audio in two folders in bash using sox
+
+  ```bash
+  leftfiles=left_rising/*.wav
+  rightfiles=right/*wav
+  for leftfile in $leftfiles
+  do
+      for rightfile in $rightfiles
+          do 
+
+              temp=$leftfile$rightfile
+              old_token=".wavright\/"
+              new_token="_"
+              temp=${temp/$old_token/$new_token}
+
+              old_token="left_rising\/"
+              new_token="_"
+              temp=${temp/$old_token/$new_token}
+
+              outputfilename=$temp
+              cmd="$leftfile $rightfile $outputfilename"
+              sox $cmd 
+      done
+  done
+  ```
