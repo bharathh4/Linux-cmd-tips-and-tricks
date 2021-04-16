@@ -569,3 +569,15 @@ where 10.0.200.9 is the ip of the machine on the local network. List all that yo
       done
   done
   ```
+
+# If some files are world writeable and you/it team is not comfortable with it
+
+```bash
+chmod -R 775 your_directory
+```
+To make it world world writable
+```bash
+chmod -R 777 your_directory
+```
+
+
