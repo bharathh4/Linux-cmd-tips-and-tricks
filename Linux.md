@@ -580,4 +580,10 @@ To make it world world writable
 chmod -R 777 your_directory
 ```
 
+# How to find shared library linked dependencies of a program
+You can see all the shared library linked dependencies of a program by using comamnd ldd. For example:
 
+```bash
+ldd /bin/ls
+ldd sox
+```
